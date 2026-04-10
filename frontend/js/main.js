@@ -23,9 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
                             <td>${cliente.dni}</td>
                             <td>${cliente.telefono}</td>
                             <td>${cliente.direccion}</td>
+                            <td>
+                                <!-- Editar (outline azul) -->
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fa-solid fa-pen-to-square"></i> Editar
+                                </button>
+
+                                <!-- Eliminar (outline rojo) -->
+                                <button class="btn btn-outline-danger btn-sm">
+                                    <i class="fa-solid fa-trash"></i> Eliminar
+                                </button>
+                            </td>
                             </tr>
                             `
-                console.log(data[i])
+                elemento.innerHTML += fila
+                //console.log(data[i]) //muestra lso datos en la consola
             }
         })
 });
