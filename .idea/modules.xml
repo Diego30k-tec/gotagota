@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gotagota.iml" filepath="$PROJECT_DIR$/.idea/gotagota.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaWeb-GotaGota.iml" filepath="$PROJECT_DIR$/.idea/JavaWeb-GotaGota.iml" />
     </modules>
   </component>
 </project>
