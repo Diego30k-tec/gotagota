@@ -14,8 +14,13 @@ public class ClienteService {
     public ClienteService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
-    //Retorna o recive la lista de todos los clientes
+    //Retorna o recibe la lista de todos los clientes
     public List<Cliente> listarTodos(){
         return clienteRepository.findAll();
+    }
+
+    //Elimina el cliente por ID //se usa void para no va a retornar ningun valor
+    public void eliminarCliente(Long id) {
+        clienteRepository.deleteById(id);
     }
 }

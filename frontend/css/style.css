@@ -10,12 +10,12 @@
     --bg: #f5f5f5;
     --text: #1a1a1a;
     --sidebar-w: 220px;
-    --sidebar-bg: #ae00ffaf;
+    --sidebar-bg: #35ac4f;
     --sidebar-line: rgba(0, 0, 0, 0.1);
-    --muted: #999;
+    --muted: #cee40e;
     --accent: #4f46e5;
     --topbar-h: 56px;
-    --danger: #e74c3c;
+    --danger: #f31800;
 }
 
 body {
