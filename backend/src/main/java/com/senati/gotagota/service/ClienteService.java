@@ -14,6 +14,12 @@ public class ClienteService {
     public ClienteService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
+
+    //Crear un clienete         //nombre de la clase
+    public Cliente crearCliente(Cliente cliente){
+        return clienteRepository.save(cliente);
+    }
+
     //Retorna o recibe la lista de todos los clientes
     public List<Cliente> listarTodos(){
         return clienteRepository.findAll();

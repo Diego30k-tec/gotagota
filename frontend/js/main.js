@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             <td>${cliente.direccion}</td>
                             <td>
                                 <!-- Editar (outline azul) -->
-                                <button class="btn btn-outline-primary btn-sm">
+                                <button 
+                                    class="btn btn-outline-primary btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i> Editar
                                 </button>
 
@@ -40,6 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 //console.log(data[i]) //muestra lso datos en la consola
             }
         })
+
+        //DOM (document object model) Dar la accion al boton de guardar clientes
+        const btnSaveCliente = document.getElementById("btn-crearcliente")
+        btnSaveCliente.addEventListener("click", guardarCliente);
 });
 
 //EVENTO DE CLICK EN JAVASCRIPT
@@ -65,4 +70,25 @@ document.addEventListener("click", function(e){
     }
 });
 
-    
+//GET and POST los traemos con Json
+// CREAMOS UNA FUNCION BASICA
+function guardarCliente() {
+    const nombre = document.getElementById("c_nombre").value;
+    const apellido = document.getElementById("c_apellido").value;
+    const dni = document.getElementById("c_dni").value;
+    const telefono = document.getElementById("c_telefono").value;
+    const direccion = document.getElementById("c_direccion").value;
+        fetch(`http://localhost:8080/api/clientes`, {
+            method: 'POST',
+            headers :{"Content-Type":"application/json"},
+            body: JSON.stringify({nombre, apellido, dni, telefono, direccion})
+        }).then(response => {
+            console.log(response) // Mensaje en la consola (209)
+            if (response.ok) {
+                location.reload()
+            }else{
+                alert("Error: no se pudo guardar")
+            }
+        });
+
+}

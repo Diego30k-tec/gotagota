@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("api/clientes")
 // Esta anotacion permite que el front-end pueda llamar a esta API
 // Si no ponemos esto, el navegador bloquea las peticiones por politicas CORS
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*") //si esto no esta los demas no funciona
 public class ClienteController {
     //DECLARAMOS UNA VARIABLE DEFINIDA
     // Inyectamos el servicio para acceder a la logica del negocio
@@ -25,7 +25,13 @@ public class ClienteController {
     @GetMapping
     public List<Cliente> listar() {return clienteService.listarTodos();}
 
-    // DELETE /api/clientes/{id} -> elimina un cliente por su ID
+    @PostMapping
+    public ResponseEntity<Cliente> crear(@RequestBody Cliente cliente){
+        return ResponseEntity.ok(clienteService.crearCliente(cliente));//se crea el metodo crearCliente
+    }
+    //void no retorna
+
+    // DELETE /api/clientes/{id} -> elimina un cliente por su ID Metodo
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id){
         clienteService.eliminarCliente(id);
