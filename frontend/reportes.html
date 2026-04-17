@@ -44,7 +44,7 @@
         </li>
         <li>
           <a href="reportes.html" class="activo" data-page="reportes">
-            <i class="fa-solid fa-clipboard-list"></i>
+            <i class="fa-solid fa-clu_ipboard-list"></i>
             <span>Reportes</span>
           </a>
         </li>
@@ -97,7 +97,7 @@
       </div>
     </main>
 
-    <!-- Modal -->
+    <!-- Modal REGISTRO CLIENTE-->
     <div
       class="modal fade"
       id="modalRegistroCliente"
@@ -182,6 +182,98 @@
         </div>
       </div>
     </div>
+
+
+<!-- Modal EDITAR-CLIENTE DE CLIENTE-->
+    <div
+      class="modal fade"
+      id="modalRegistroCliente"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_u_nombre"
+                  name="nombre"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="" class="form-label">Apellido</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_u_apellido"
+                  name="apellido"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="" class="form-label">DNI</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_u_dni"
+                  name="dni"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="" class="form-label">Teléfono</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="c_u_telefono"
+                  name="telefono"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="" class="form-label">Dirección</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_u_direccion"
+                  name="direccion"
+                  required
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btn-Editarcliente">Actualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    
     <script src="js/main.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
