@@ -116,4 +116,5 @@ function llamardatos() {
     document.getElementById("c_u_dni").value = dni_cli;
     document.getElementById("c_u_telefono").value = telf_cli;
     document.getElementById("c_u_direccion").value = dire_cli;
+    
 }
