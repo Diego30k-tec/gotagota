@@ -104,7 +104,7 @@ function guardarCliente() {
 
 //Funcion para poner los datos en el input del FORMULARIO actualizar
 function llamardatos() {
-    const btnEditar = e.target.closest("btnEditar");
+    const btnEditar = e.target.closest("#btnEditar");
     const id_cli = btnEditar.dataset.idcli;
     const nom_cli = btnEditar.dataset.nomcli;
     const apell_cli = btnEditar.dataset.apellcli;
