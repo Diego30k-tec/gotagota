@@ -104,7 +104,7 @@ function guardarCliente() {
 
 //Funcion para poner los datos en el input del FORMULARIO actualizar
 function llamardatos() {
-    const btnEditar = e.target.closest("btnEditar");
+    const btnEditar = e.target.closest("#btnEditar");
     const id_cli = btnEditar.dataset.idcli;
     const nom_cli = btnEditar.dataset.nomcli;
     const apell_cli = btnEditar.dataset.apellcli;
@@ -116,4 +116,5 @@ function llamardatos() {
     document.getElementById("c_u_dni").value = dni_cli;
     document.getElementById("c_u_telefono").value = telf_cli;
     document.getElementById("c_u_direccion").value = dire_cli;
+    
 }
