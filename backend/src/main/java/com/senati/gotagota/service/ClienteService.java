@@ -29,4 +29,11 @@ public class ClienteService {
     public void eliminarCliente(Long id) {
         clienteRepository.deleteById(id);
     }
+
+    // Spring Data JPA decide qué hacer basándose en id
+    public Cliente actualizarCliente(Cliente cliente) {
+        // Si el objeto 'cliente' ya trae su ID, JPA entenderá que es una actualización
+        return clienteRepository.save(cliente);
+    }
+
 }

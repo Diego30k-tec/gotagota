@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
 
+            // Buscamos el ID que pusimos en el HTML y le asignamos el tamaño del array 'data'
+            document.getElementById('totalClientes').innerText = data.length;
+
             //console.log('Datos:', data);
             const elemento = document.getElementById("table-cliente")
             //elemento.innerHTML = JSON.stringify(data);
@@ -35,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     data-apellcli=${cliente.apellido}
                                     data-dnicli=${cliente.dni}
                                     data-telfcli=${cliente.telefono}
-                                    data-direcli=${cliente.direccion}
+                                    data-direcli="${cliente.direccion}"
                                     >
                                     <i class="fa-solid fa-pen-to-square"></i> Editar
                                 </button>
@@ -55,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //DOM (document object model) Dar la accion al boton de guardar clientes
         const btnSaveCliente = document.getElementById("btn-crearcliente")
         btnSaveCliente.addEventListener("click", guardarCliente);
+
 });
 
 //EVENTO DE CLICK EN JAVASCRIPT
@@ -103,18 +107,67 @@ function guardarCliente() {
 }
 
 //Funcion para poner los datos en el input del FORMULARIO actualizar
-function llamardatos() {
-    const btnEditar = e.target.closest("#btnEditar");
-    const id_cli = btnEditar.dataset.idcli;
-    const nom_cli = btnEditar.dataset.nomcli;
-    const apell_cli = btnEditar.dataset.apellcli;
-    const dni_cli = btnEditar.dataset.dnicli;
-    const telf_cli = btnEditar.dataset.telfcli;
-    const dire_cli = btnEditar.dataset.direcli;
-    document.getElementById("c_u_nombre").value = nom_cli;
-    document.getElementById("c_u_apellido").value = apell_cli;
-    document.getElementById("c_u_dni").value = dni_cli;
-    document.getElementById("c_u_telefono").value = telf_cli;
-    document.getElementById("c_u_direccion").value = dire_cli;
+document.addEventListener('click', function (e) {
     
-}
+    // Verificamos si el clic fue en un botón de editar (buscando los atributos data)
+    if (e.target.closest('#btnEditar')) {
+        const btnEditar = e.target.closest('#btnEditar');
+
+        // Extraemos los datos que guardaste en los atributos data-
+        const id_cli = btnEditar.dataset.idcli;
+        const nom_cli = btnEditar.dataset.nomcli;
+        const apell_cli = btnEditar.dataset.apellcli;
+        const dni_cli = btnEditar.dataset.dnicli;
+        const telf_cli = btnEditar.dataset.telfcli;
+        const dire_cli = btnEditar.dataset.direcli;
+
+        // Rellenamos el formulario usando los IDs que pusiste en el HTML
+        document.getElementById('c_u_id').value = id_cli;
+        document.getElementById('c_u_nombre').value = nom_cli;
+        document.getElementById('c_u_apellido').value = apell_cli;
+        document.getElementById('c_u_dni').value = dni_cli;
+        document.getElementById('c_u_telefono').value = telf_cli;
+        document.getElementById('c_u_direccion').value = dire_cli;
+        
+        // Si necesitas el ID para actualizar luego, guárdalo en una variable global
+        // o en un campo oculto en el formulario.
+        console.log("Formulario cargado para el cliente:", nom_cli);
+
+    }
+});
+
+//Funcion actualizar datos
+// Buscamos el botón de "Actualizar" por su ID
+const btnActualizar = document.getElementById("btn-Editarcliente");
+
+btnActualizar.addEventListener("click", function() {    //El boton actualizar
+    // 1. Capturamos el ID oculto y los valores de los inputs
+    const idCliente = document.getElementById('c_u_id').value;
+
+    const objetoCliente = {
+        id: idCliente,
+        nombre: document.getElementById('c_u_nombre').value,
+        apellido: document.getElementById('c_u_apellido').value,
+        dni: document.getElementById('c_u_dni').value,
+        telefono: document.getElementById('c_u_telefono').value,
+        direccion: document.getElementById('c_u_direccion').value
+    };
+
+    // 2. Enviamos el "paquete" a Spring Boot usando PUT (quiero actualizar algo que ya existe)
+    fetch('http://localhost:8080/api/clientes/' + idCliente, {  //dirección exacta de la casa //es como poner el número de departamento
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json' // Le avisamos que enviamos un JSON
+        },
+        body: JSON.stringify(objetoCliente) // Convertimos el objeto a texto
+    })
+    .then(res => {  //Respuesta del servidor
+        if (res.ok) {
+            alert("¡Cliente actualizado con éxito!");
+            location.reload(); // Recarga la página para refrescar la tabla
+        } else {
+            alert("Error al actualizar. Revisa la consola.");
+        }
+    })
+    .catch(error => console.error("Error:", error));
+});

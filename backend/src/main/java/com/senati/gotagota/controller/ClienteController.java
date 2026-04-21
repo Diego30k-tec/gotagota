@@ -38,5 +38,16 @@ public class ClienteController {
         return ResponseEntity.noContent().build();
     }
 
+
+    // PUT / Recibe los PUT para acualizar
+    @PutMapping("/{id}")    //variable en la URL //Spring captura ese valor y en cuentra el cliente
+                                    //el numero de la url       //toma el JSON y lo
+                                    // y lo almacena en id      //convierte en objeto JAVA
+    public ResponseEntity<Cliente> actualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
+        // Nos aseguramos de que el ID de la URL sea el mismo que el del objeto
+        cliente.setId(id);
+        return ResponseEntity.ok(clienteService.actualizarCliente(cliente));
+    }
+
 }
 
